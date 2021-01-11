@@ -8,8 +8,7 @@ export default class SwapiService {
       throw new Error(`Could not fetch ${url}, received ${result.status}`);
     }
 
-    const body = await result.json();
-    return body;
+    return await result.json();
   }
 
   async getAllPeople() {
@@ -39,11 +38,3 @@ export default class SwapiService {
     return this.getResource(`/starships/${id}/`);
   }
 }
-
-const swapi = new SwapiService();
-
-swapi.getAllPeople().then((people) => {
-  people.forEach(person => {
-    console.log(person.name);
-  });
-});
